@@ -1,0 +1,208 @@
+/* ══════════════════════════════════════════════════════
+   TEAM — Floating avatars constellation
+   Raycast "Your team, reimagined" style
+   ══════════════════════════════════════════════════════ */
+
+.section-team {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-32) 5vw;
+  overflow: hidden;
+}
+
+/* Radial glow behind */
+.section-team::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(
+    circle,
+    rgba(94, 94, 240, 0.06) 0%,
+    rgba(59, 130, 246, 0.03) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Subtle orbit ring */
+.section-team::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 560px;
+  height: 560px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-circle);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* ══ Content wrapper ══ */
+.team-content {
+  position: relative;
+  text-align: center;
+  max-width: 600px;
+  z-index: 2;
+}
+
+.team-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-8);
+}
+
+.team-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-circle);
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+.team-content h2 {
+  font-size: var(--fs-display);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.035em;
+  color: var(--color-text-primary);
+  line-height: var(--lh-heading);
+  margin-bottom: var(--space-6);
+}
+
+.team-content .team-subtitle {
+  font-size: 1.1rem;
+  font-weight: var(--fw-regular);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-10);
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Role cards row */
+.team-roles {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+.team-role {
+  text-align: center;
+}
+
+.team-role-count {
+  font-size: 1.5rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+  display: block;
+  line-height: 1;
+}
+
+.team-role-label {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-tertiary);
+  margin-top: var(--space-2);
+  display: block;
+}
+
+/* Bottom tagline */
+.team-tagline {
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-quaternary);
+  letter-spacing: var(--ls-tag);
+}
+
+/* ══ Floating avatars ══ */
+.team-avatars {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.team-avatar {
+  position: absolute;
+  border-radius: var(--radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--fw-semibold);
+  color: #fff;
+  border: 2px solid var(--color-bg);
+  box-shadow: var(--shadow-md);
+  animation: avatarFloat var(--float-duration, 6s) ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
+}
+
+/* Sizes */
+.team-avatar--lg { width: 56px; height: 56px; font-size: 0.9rem; }
+.team-avatar--md { width: 44px; height: 44px; font-size: 0.75rem; }
+.team-avatar--sm { width: 36px; height: 36px; font-size: 0.65rem; }
+
+/* Position each avatar around the center */
+.team-avatar:nth-child(1)  { top: 8%;  left: 15%;  --float-duration: 5s;  --float-delay: 0s; }
+.team-avatar:nth-child(2)  { top: 5%;  left: 45%;  --float-duration: 7s;  --float-delay: 0.5s; }
+.team-avatar:nth-child(3)  { top: 10%; right: 18%; --float-duration: 6s;  --float-delay: 1s; }
+.team-avatar:nth-child(4)  { top: 30%; left: 5%;   --float-duration: 5.5s; --float-delay: 0.3s; }
+.team-avatar:nth-child(5)  { top: 28%; right: 6%;  --float-duration: 6.5s; --float-delay: 0.8s; }
+.team-avatar:nth-child(6)  { bottom: 30%; left: 8%; --float-duration: 7s;  --float-delay: 1.2s; }
+.team-avatar:nth-child(7)  { bottom: 25%; right: 10%; --float-duration: 5s; --float-delay: 0.6s; }
+.team-avatar:nth-child(8)  { bottom: 10%; left: 20%; --float-duration: 6s; --float-delay: 0.2s; }
+.team-avatar:nth-child(9)  { bottom: 8%;  right: 22%; --float-duration: 5.5s; --float-delay: 1.5s; }
+.team-avatar:nth-child(10) { top: 50%;  left: 2%;  --float-duration: 7.5s; --float-delay: 0.4s; }
+.team-avatar:nth-child(11) { top: 48%;  right: 3%; --float-duration: 6s;  --float-delay: 1s; }
+.team-avatar:nth-child(12) { bottom: 5%; left: 42%; --float-duration: 5s; --float-delay: 0.7s; }
+.team-avatar:nth-child(13) { top: 18%; left: 32%; --float-duration: 6.5s; --float-delay: 0.9s; }
+.team-avatar:nth-child(14) { bottom: 18%; right: 28%; --float-duration: 5.5s; --float-delay: 1.3s; }
+
+/* Colors */
+.team-avatar--c1 { background: #5e5ef0; }
+.team-avatar--c2 { background: #3b82f6; }
+.team-avatar--c3 { background: #10b981; }
+.team-avatar--c4 { background: #8b5cf6; }
+.team-avatar--c5 { background: #f59e0b; }
+.team-avatar--c6 { background: #ef4444; }
+
+@keyframes avatarFloat {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-12px) translateX(6px); }
+  50% { transform: translateY(-4px) translateX(-8px); }
+  75% { transform: translateY(-16px) translateX(4px); }
+}
+
+/* ══ Responsive ══ */
+@media (max-width: 768px) {
+  .section-team::after { width: 360px; height: 360px; }
+
+  .team-content h2 { font-size: clamp(2rem, 8vw, 3rem); }
+
+  .team-roles { gap: var(--space-6); }
+
+  .team-avatar--lg { width: 44px; height: 44px; font-size: 0.75rem; }
+  .team-avatar--md { width: 36px; height: 36px; font-size: 0.65rem; }
+  .team-avatar--sm { width: 28px; height: 28px; font-size: 0.55rem; }
+
+  .team-avatar:nth-child(10),
+  .team-avatar:nth-child(11),
+  .team-avatar:nth-child(12) { display: none; }
+}

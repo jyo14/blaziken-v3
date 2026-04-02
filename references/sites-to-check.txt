@@ -1,0 +1,12 @@
+Sites to evaluate for Blaziken v3 references:
+
+1. https://linear.app
+2. https://stripe.com
+3. https://vercel.com
+4. https://resend.com
+5. https://raycast.com
+6. https://anthropic.com
+7. https://deepmind.google
+8. https://novyte.in (current v2 reference)
+9. https://saaspo.com/style/scroll-animations (gallery)
+10. https://awwwards.com/websites/animation/ (gallery)

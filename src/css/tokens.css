@@ -1,0 +1,211 @@
+/* ══════════════════════════════════════════════════════
+   DESIGN TOKENS — Blaziken V3
+   Linear-inspired: dark-first, sans-serif, precision minimal
+   ══════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Typography ── */
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --fs-display: clamp(3rem, 6vw, 4.8rem);
+  --fs-h2: clamp(2.2rem, 4.5vw, 3.4rem);
+  --fs-h3: 1.3rem;
+  --fs-h4: 1.05rem;
+  --fs-body: 1rem;
+  --fs-body-sm: 0.875rem;
+  --fs-caption: 0.8rem;
+  --fs-label: 0.7rem;
+  --fs-tag: 0.65rem;
+  --fs-micro: 0.6rem;
+  --fs-nav: 0.875rem;
+  --fs-nav-cta: 0.875rem;
+
+  --lh-heading: 1.1;
+  --lh-body: 1.6;
+  --ls-heading: -0.03em;
+  --ls-tight: -0.02em;
+  --ls-label: 0.04em;
+  --ls-tag: 0.03em;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* ── Spacing ── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  --section-padding: var(--space-32) 5vw;
+  --content-max-width: 1100px;
+
+  /* ── Radii ── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 100px;
+  --radius-circle: 50%;
+
+  /* ── Transitions ── */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 0.15s;
+  --duration-normal: 0.25s;
+  --duration-slow: 0.4s;
+  --duration-reveal: 0.7s;
+}
+
+/* ══════════════════════════════════════════════════════
+   DARK MODE (default — Linear inspired)
+   ══════════════════════════════════════════════════════ */
+:root[data-theme="dark"],
+:root:not([data-theme]) {
+  --color-bg: #08090a;
+  --color-bg-elevated: #111214;
+  --color-bg-hover: #18191c;
+  --color-bg-subtle: rgba(255, 255, 255, 0.03);
+  --color-bg-card: rgba(255, 255, 255, 0.02);
+  --color-bg-card-hover: rgba(255, 255, 255, 0.05);
+
+  --color-text-primary: #f0f0f3;
+  --color-text-secondary: rgba(240, 240, 243, 0.56);
+  --color-text-tertiary: rgba(240, 240, 243, 0.36);
+  --color-text-quaternary: rgba(240, 240, 243, 0.2);
+  --color-text-ghost: rgba(240, 240, 243, 0.08);
+
+  --color-accent: #8b8bf5;
+  --color-accent-hover: rgba(139, 139, 245, 0.12);
+  --color-accent-glow: rgba(139, 139, 245, 0.3);
+  --color-accent-subtle: rgba(139, 139, 245, 0.15);
+  --color-accent-text: #a5a5ff;
+
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-hover: rgba(255, 255, 255, 0.12);
+  --color-border-strong: rgba(255, 255, 255, 0.15);
+
+  --color-surface-tag: rgba(255, 255, 255, 0.06);
+  --color-text-tag: rgba(255, 255, 255, 0.5);
+  --color-surface-tag-hover: rgba(139, 139, 245, 0.12);
+  --color-text-tag-hover: #a5a5ff;
+
+  --color-navbar-bg: rgba(8, 9, 10, 0.8);
+  --color-marquee-fade: #08090a;
+
+  --color-hero-gradient-start: rgba(139, 139, 245, 0.08);
+  --color-hero-gradient-mid: rgba(139, 139, 245, 0.03);
+  --color-hero-gradient-end: transparent;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+
+  --color-focus-ring: rgba(139, 139, 245, 0.5);
+
+  --portfolio-gradient-1: linear-gradient(135deg, #12141e 0%, #161b2a 40%, #1e2740 100%);
+  --portfolio-gradient-2: linear-gradient(135deg, #121418 0%, #161a22 40%, #1e2430 100%);
+  --portfolio-gradient-3: linear-gradient(135deg, #0f1614 0%, #14201a 40%, #1c3028 100%);
+  --portfolio-gradient-4: linear-gradient(135deg, #161220 0%, #1c1630 40%, #2a1e44 100%);
+
+  --btn-primary-bg: #f0f0f3;
+  --btn-primary-text: #08090a;
+  --btn-primary-border: #f0f0f3;
+  --btn-primary-hover-bg: #d8d8db;
+  --btn-secondary-bg: transparent;
+  --btn-secondary-text: var(--color-text-secondary);
+  --btn-secondary-border: rgba(255, 255, 255, 0.1);
+  --btn-secondary-hover-bg: rgba(255, 255, 255, 0.05);
+  --btn-secondary-hover-border: rgba(255, 255, 255, 0.2);
+  --btn-secondary-hover-text: var(--color-text-primary);
+
+  --grid-dot-color: rgba(255, 255, 255, 0.07);
+  --grid-dot-highlight: rgba(139, 139, 245, 0.4);
+}
+
+/* ══════════════════════════════════════════════════════
+   LIGHT MODE
+   ══════════════════════════════════════════════════════ */
+:root[data-theme="light"] {
+  --color-bg: #ffffff;
+  --color-bg-elevated: #f8f8fa;
+  --color-bg-hover: #f0f0f3;
+  --color-bg-subtle: rgba(0, 0, 0, 0.02);
+  --color-bg-card: rgba(0, 0, 0, 0.02);
+  --color-bg-card-hover: rgba(0, 0, 0, 0.04);
+
+  --color-text-primary: #0a0a0c;
+  --color-text-secondary: rgba(10, 10, 12, 0.55);
+  --color-text-tertiary: rgba(10, 10, 12, 0.38);
+  --color-text-quaternary: rgba(10, 10, 12, 0.22);
+  --color-text-ghost: rgba(10, 10, 12, 0.08);
+
+  --color-accent: #5e5ef0;
+  --color-accent-hover: rgba(94, 94, 240, 0.08);
+  --color-accent-glow: rgba(94, 94, 240, 0.25);
+  --color-accent-subtle: rgba(94, 94, 240, 0.1);
+  --color-accent-text: #5050d8;
+
+  --color-border: rgba(0, 0, 0, 0.06);
+  --color-border-hover: rgba(0, 0, 0, 0.12);
+  --color-border-strong: rgba(0, 0, 0, 0.15);
+
+  --color-surface-tag: rgba(0, 0, 0, 0.04);
+  --color-text-tag: rgba(0, 0, 0, 0.45);
+  --color-surface-tag-hover: rgba(94, 94, 240, 0.08);
+  --color-text-tag-hover: #5050d8;
+
+  --color-navbar-bg: rgba(255, 255, 255, 0.85);
+  --color-marquee-fade: #ffffff;
+
+  --color-hero-gradient-start: rgba(94, 94, 240, 0.06);
+  --color-hero-gradient-mid: rgba(94, 94, 240, 0.02);
+  --color-hero-gradient-end: transparent;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
+
+  --color-focus-ring: rgba(94, 94, 240, 0.4);
+
+  --portfolio-gradient-1: linear-gradient(135deg, #eef0f8 0%, #dfe4f0 40%, #c8d0e8 100%);
+  --portfolio-gradient-2: linear-gradient(135deg, #eef0f4 0%, #dfe4ea 40%, #c8d0dc 100%);
+  --portfolio-gradient-3: linear-gradient(135deg, #edf4f0 0%, #d8eade 40%, #c0dcc8 100%);
+  --portfolio-gradient-4: linear-gradient(135deg, #f0eef6 0%, #e4daf0 40%, #d4c8e8 100%);
+
+  --btn-primary-bg: #0a0a0c;
+  --btn-primary-text: #ffffff;
+  --btn-primary-border: #0a0a0c;
+  --btn-primary-hover-bg: #28282c;
+  --btn-secondary-bg: transparent;
+  --btn-secondary-text: var(--color-text-secondary);
+  --btn-secondary-border: rgba(0, 0, 0, 0.1);
+  --btn-secondary-hover-bg: rgba(0, 0, 0, 0.03);
+  --btn-secondary-hover-border: rgba(0, 0, 0, 0.2);
+  --btn-secondary-hover-text: var(--color-text-primary);
+
+  --grid-dot-color: rgba(0, 0, 0, 0.08);
+  --grid-dot-highlight: rgba(94, 94, 240, 0.35);
+}
+
+/* ── Theme transition (only active during toggle) ── */
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition: background-color 0.5s ease,
+              color 0.5s ease,
+              border-color 0.5s ease,
+              box-shadow 0.5s ease !important;
+}

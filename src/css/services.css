@@ -1,0 +1,160 @@
+/* ══════════════════════════════════════════════════════
+   SERVICES — Stacking card rows (Sitetrip-inspired)
+   ══════════════════════════════════════════════════════ */
+
+.section-services {
+  position: relative;
+  z-index: 2;
+  padding: 0 5vw;
+}
+
+/* Heading — scrolls normally, not sticky */
+.services-header {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-32) 0 var(--space-16);
+}
+
+.services-header .section-label {
+  margin-bottom: var(--space-4);
+}
+
+.services-header .section-heading {
+  max-width: 480px;
+  line-height: 1.15;
+}
+
+/* Scroll container — tall enough for the stacking animation */
+.services-stacker {
+  position: relative;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  /* Height = row1 + gap + row2 + extra scroll space for the overlap */
+  padding-bottom: 360px;
+}
+
+/* Each row is a 3-col grid */
+.services-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+/* Row 1 — sticky, stays in place while row 2 scrolls over it */
+.services-row-1 {
+  position: sticky;
+  top: 80px;
+  z-index: 2;
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+/* Row 2 — natural flow, scrolls up and overlaps row 1 */
+.services-row-2 {
+  position: relative;
+  z-index: 3;
+  margin-top: var(--space-6);
+}
+
+/* ── Service Card ── */
+.service-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  border-color: var(--color-border-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-card-number {
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
+  color: var(--color-text-quaternary);
+  margin-bottom: var(--space-6);
+  font-variant-numeric: tabular-nums;
+}
+
+.service-card h3 {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+  line-height: 1.25;
+}
+
+.service-card p {
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+  flex: 1;
+}
+
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.service-tags span {
+  font-size: var(--fs-tag);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-tag);
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-tag);
+  color: var(--color-text-tag);
+  transition: background 0.25s, color 0.25s;
+}
+
+.service-card:hover .service-tags span {
+  background: var(--color-surface-tag-hover);
+  color: var(--color-text-tag-hover);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .services-stacker {
+    padding-bottom: var(--space-16);
+  }
+
+  .services-header {
+    padding: var(--space-24) 0 var(--space-10);
+  }
+
+  .services-header .section-heading {
+    max-width: none;
+  }
+
+  .services-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .services-row-1 {
+    position: relative;
+    top: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .services-row {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    min-height: auto;
+    padding: var(--space-6) var(--space-5);
+  }
+}

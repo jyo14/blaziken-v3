@@ -1,0 +1,310 @@
+/* ══════════════════════════════════════════════════════
+   PORTFOLIO — Full-viewport stacking projects
+   AppyCamper scroll + Raycast line-grid visuals
+   ══════════════════════════════════════════════════════ */
+
+.section-portfolio {
+  position: relative;
+  z-index: 2;
+}
+
+.portfolio-header {
+  padding: var(--space-32) 5vw var(--space-16);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.portfolio-header .section-label { margin-bottom: var(--space-4); }
+.portfolio-header .section-heading { max-width: 480px; }
+
+/* ══ Stack ══ */
+.portfolio-stack { position: relative; }
+
+/* ══ Each project = full viewport ══ */
+.pf-project {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 5vw;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  overflow: hidden;
+  will-change: transform, opacity;
+  transform-origin: center center;
+}
+
+.pf-project:nth-child(1) { z-index: 1; }
+.pf-project:nth-child(2) { z-index: 2; }
+.pf-project:nth-child(3) { z-index: 3; }
+.pf-project:nth-child(4) { z-index: 4; }
+
+.pf-project:nth-child(even) { background: var(--color-bg-elevated); }
+
+/* ══ Text side ══ */
+.pf-project-text { max-width: 460px; }
+
+.pf-project-label {
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--color-text-quaternary);
+  margin-bottom: var(--space-4);
+  display: block;
+}
+
+.pf-project-category {
+  font-size: var(--fs-tag);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-tag);
+  text-transform: uppercase;
+  color: var(--color-accent-text);
+  margin-bottom: var(--space-6);
+  display: block;
+}
+
+.pf-project-text h3 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-5);
+  line-height: 1.2;
+}
+
+.pf-project-text p {
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-10);
+}
+
+.pf-project-stats { display: flex; gap: var(--space-12); margin-bottom: var(--space-6); }
+
+.pf-project-stat-value {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+  display: block;
+  line-height: 1;
+  letter-spacing: var(--ls-heading);
+  font-variant-numeric: tabular-nums;
+}
+
+.pf-project-stat-label {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-tertiary);
+  margin-top: var(--space-2);
+  display: block;
+}
+
+.pf-project-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.pf-project-tags span {
+  font-size: var(--fs-tag); font-weight: var(--fw-medium); letter-spacing: var(--ls-tag);
+  text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: var(--radius-pill);
+  background: var(--color-surface-tag); color: var(--color-text-tag);
+}
+
+/* ══════════════════════════════════════════════════════
+   VISUAL SIDE — Line grid + floating wireframe boxes
+   ══════════════════════════════════════════════════════ */
+.pf-project-visual {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Line grid background */
+.pf-project-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--color-text-ghost) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-text-ghost) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.35;
+}
+
+/* Colored radial glow */
+.pf-project-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.pf-project:nth-child(1) .pf-project-visual::after { background: radial-gradient(ellipse at 50% 50%, rgba(94, 94, 240, 0.1) 0%, transparent 60%); }
+.pf-project:nth-child(2) .pf-project-visual::after { background: radial-gradient(ellipse at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 60%); }
+.pf-project:nth-child(3) .pf-project-visual::after { background: radial-gradient(ellipse at 50% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 60%); }
+.pf-project:nth-child(4) .pf-project-visual::after { background: radial-gradient(ellipse at 50% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 60%); }
+
+/* ══ Isometric scene ══ */
+.pf-iso {
+  position: relative;
+  z-index: 1;
+  width: 320px;
+  height: 280px;
+  transform: perspective(800px) rotateX(20deg) rotateY(-15deg) rotateZ(2deg);
+  transform-style: preserve-3d;
+}
+
+/* Wireframe panels */
+.pf-panel {
+  position: absolute;
+  border: 1px solid;
+  border-radius: 6px;
+  backdrop-filter: blur(2px);
+  transition: transform 0.6s var(--ease-out);
+}
+
+.pf-project:hover .pf-panel {
+  transform: translateZ(12px);
+}
+
+/* ── Project 1: Survey — stacked dashboard panels ── */
+.pf-iso--survey .pf-panel:nth-child(1) {
+  inset: 15% 5% 5% 5%;
+  border-color: rgba(94, 94, 240, 0.12);
+  background: rgba(94, 94, 240, 0.02);
+}
+.pf-iso--survey .pf-panel:nth-child(2) {
+  top: 8%; left: 10%; width: 55%; height: 35%;
+  border-color: rgba(94, 94, 240, 0.25);
+  background: rgba(94, 94, 240, 0.04);
+  animation: panelFloat 4s ease-in-out infinite;
+}
+.pf-iso--survey .pf-panel:nth-child(3) {
+  top: 20%; right: 8%; width: 35%; height: 50%;
+  border-color: rgba(94, 94, 240, 0.35);
+  background: rgba(94, 94, 240, 0.06);
+  animation: panelFloat 4s ease-in-out 0.6s infinite;
+}
+.pf-iso--survey .pf-accent {
+  position: absolute;
+  bottom: 18%; left: 15%; width: 40%; height: 12%;
+  border-radius: 4px;
+  background: rgba(94, 94, 240, 0.2);
+  border: 1px solid rgba(94, 94, 240, 0.35);
+  animation: panelFloat 4s ease-in-out 1.2s infinite;
+}
+
+/* ── Project 2: Sales — waveform panels ── */
+.pf-iso--sales .pf-panel:nth-child(1) {
+  inset: 10% 5% 10% 5%;
+  border-color: rgba(59, 130, 246, 0.12);
+  background: rgba(59, 130, 246, 0.02);
+}
+.pf-iso--sales .pf-panel:nth-child(2) {
+  top: 15%; left: 10%; width: 80%; height: 30%;
+  border-color: rgba(59, 130, 246, 0.3);
+  background: rgba(59, 130, 246, 0.04);
+  animation: panelFloat 3.5s ease-in-out infinite;
+}
+.pf-iso--sales .pf-panel:nth-child(3) {
+  bottom: 15%; left: 10%; width: 35%; height: 25%;
+  border-color: rgba(59, 130, 246, 0.25);
+  background: rgba(59, 130, 246, 0.04);
+  animation: panelFloat 3.5s ease-in-out 0.5s infinite;
+}
+.pf-iso--sales .pf-panel:nth-child(4) {
+  bottom: 15%; right: 10%; width: 35%; height: 25%;
+  border-color: rgba(59, 130, 246, 0.25);
+  background: rgba(59, 130, 246, 0.04);
+  animation: panelFloat 3.5s ease-in-out 1s infinite;
+}
+.pf-iso--sales .pf-accent {
+  position: absolute;
+  top: 22%; left: 15%; width: 65%; height: 6%;
+  border-radius: 3px;
+  background: rgba(59, 130, 246, 0.25);
+  animation: accentPulse 2s ease-in-out infinite;
+}
+
+/* ── Project 3: MCQ — card + circles ── */
+.pf-iso--mcq .pf-panel:nth-child(1) {
+  inset: 10% 8% 8% 8%;
+  border-color: rgba(16, 185, 129, 0.12);
+  background: rgba(16, 185, 129, 0.02);
+}
+.pf-iso--mcq .pf-panel:nth-child(2) {
+  top: 15%; left: 15%; width: 70%; height: 55%;
+  border-color: rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.04);
+  animation: panelFloat 4.5s ease-in-out infinite;
+}
+.pf-iso--mcq .pf-circle {
+  position: absolute;
+  width: 20px; height: 20px;
+  border-radius: var(--radius-circle);
+  border: 2px solid rgba(16, 185, 129, 0.4);
+}
+.pf-iso--mcq .pf-circle:nth-of-type(1) { top: 28%; left: 22%; animation: panelFloat 4.5s ease-in-out 0.3s infinite; }
+.pf-iso--mcq .pf-circle:nth-of-type(2) { top: 40%; left: 22%; animation: panelFloat 4.5s ease-in-out 0.6s infinite; }
+.pf-iso--mcq .pf-circle:nth-of-type(3) { top: 52%; left: 22%; background: rgba(16, 185, 129, 0.3); animation: panelFloat 4.5s ease-in-out 0.9s infinite; }
+.pf-iso--mcq .pf-circle:nth-of-type(4) { top: 64%; left: 22%; animation: panelFloat 4.5s ease-in-out 1.2s infinite; }
+
+/* ── Project 4: Brand — floating shapes ── */
+.pf-iso--brand .pf-panel:nth-child(1) {
+  inset: 10% 5% 10% 5%;
+  border-color: rgba(139, 92, 246, 0.12);
+  background: rgba(139, 92, 246, 0.02);
+}
+.pf-iso--brand .pf-panel:nth-child(2) {
+  top: 15%; left: 12%; width: 35%; height: 32%;
+  border-color: rgba(139, 92, 246, 0.3);
+  background: rgba(139, 92, 246, 0.06);
+  animation: panelFloat 3.8s ease-in-out infinite;
+}
+.pf-iso--brand .pf-panel:nth-child(3) {
+  top: 15%; right: 12%; width: 35%; height: 32%;
+  border-color: rgba(139, 92, 246, 0.3);
+  background: rgba(139, 92, 246, 0.06);
+  border-radius: var(--radius-circle);
+  animation: panelFloat 3.8s ease-in-out 0.5s infinite;
+}
+.pf-iso--brand .pf-panel:nth-child(4) {
+  bottom: 15%; left: 30%; width: 40%; height: 30%;
+  border-color: rgba(139, 92, 246, 0.4);
+  background: rgba(139, 92, 246, 0.08);
+  animation: panelFloat 3.8s ease-in-out 1s infinite;
+}
+
+@keyframes panelFloat {
+  0%, 100% { transform: translateZ(0px) translateY(0); }
+  50% { transform: translateZ(16px) translateY(-6px); }
+}
+
+@keyframes accentPulse {
+  0%, 100% { opacity: 0.25; width: 65%; }
+  50% { opacity: 0.6; width: 70%; }
+}
+
+/* ══ Responsive ══ */
+@media (max-width: 900px) {
+  .pf-project {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    padding: 5rem 5vw 2rem;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .pf-project-visual { min-height: 300px; }
+  .pf-iso { width: 240px; height: 210px; }
+}
+
+@media (max-width: 560px) {
+  .pf-project { padding: 5rem 1.25rem 2rem; }
+  .pf-project-stats { gap: var(--space-8); }
+  .pf-project-stat-value { font-size: 1.8rem; }
+  .pf-iso { width: 200px; height: 180px; }
+}

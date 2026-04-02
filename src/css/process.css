@@ -1,0 +1,426 @@
+/* ══════════════════════════════════════════════════════
+   PROCESS — Horizontal scroll driven by vertical scroll
+   Adaptive ML / Splide-inspired
+   ══════════════════════════════════════════════════════ */
+
+.section-process {
+  position: relative;
+  z-index: 2;
+}
+
+/* Tall container — vertical scroll drives horizontal movement */
+.process-scroll-area {
+  position: relative;
+  height: 300vh;
+}
+
+/* Sticky wrapper — stays in viewport while cards slide */
+.process-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: var(--space-20) 5vw var(--space-10);
+}
+
+/* Header row — heading left, arrows right */
+.process-header {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  width: 100%;
+  padding-bottom: var(--space-8);
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+.process-header-text .section-label {
+  margin-bottom: var(--space-4);
+}
+
+.process-header-text .section-heading {
+  max-width: 500px;
+}
+
+/* Arrow navigation */
+.process-arrows {
+  display: flex;
+  gap: var(--space-3);
+  flex-shrink: 0;
+  padding-bottom: var(--space-2);
+}
+
+.process-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-circle);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-tertiary);
+  transition: border-color var(--duration-normal), background var(--duration-normal), color var(--duration-normal);
+}
+
+.process-arrow:hover {
+  border-color: var(--color-border-hover);
+  background: var(--color-bg-hover);
+  color: var(--color-text-primary);
+}
+
+.process-arrow:disabled,
+.process-arrow.disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+.process-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Horizontal track — slides via JS transform */
+.process-track {
+  display: flex;
+  gap: var(--space-6);
+  will-change: transform;
+  flex: 1;
+  align-items: stretch;
+  min-height: 0;
+}
+
+/* Spacer after last card so it can fully scroll into view */
+.process-track::after {
+  content: '';
+  flex-shrink: 0;
+  width: 5vw;
+}
+
+/* ── Process Card ── */
+.process-card {
+  flex-shrink: 0;
+  width: min(700px, 85vw);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process-card:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Visual area — left side illustration */
+.process-card-visual {
+  width: 260px;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-right: 1px solid var(--color-border);
+}
+
+/* Abstract geometric illustrations per card */
+.process-visual-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dot grid background in visual area */
+.process-card-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--color-text-ghost) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+}
+
+/* Abstract shapes — unique per card */
+.process-shape {
+  position: relative;
+  z-index: 1;
+}
+
+/* Card 1 — concentric circles that pulse outward (discovery) */
+.process-shape-understand {
+  width: 100px;
+  height: 100px;
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  animation: understandPulseOuter 3s ease-in-out infinite;
+}
+
+.process-shape-understand::before {
+  content: '';
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-circle);
+  opacity: 0.6;
+  animation: understandPulseMid 3s ease-in-out 0.3s infinite;
+}
+
+.process-shape-understand::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: var(--color-accent);
+  border-radius: var(--radius-circle);
+  opacity: 0.4;
+  animation: understandPulseCore 3s ease-in-out 0.6s infinite;
+}
+
+@keyframes understandPulseOuter {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.12); opacity: 0.8; }
+}
+@keyframes understandPulseMid {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.1); opacity: 0.6; }
+}
+@keyframes understandPulseCore {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.2); opacity: 0.6; }
+}
+
+/* Card 2 — nodes that light up in sequence (system design) */
+.process-shape-design {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.process-shape-design .node {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  animation: designNodePulse 2.4s ease-in-out infinite;
+}
+
+.process-shape-design .node:nth-child(1) {
+  opacity: 0.2;
+  animation-delay: 0s;
+}
+
+.process-shape-design .node:nth-child(3) {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  opacity: 0.3;
+  animation-delay: 0.4s;
+}
+
+.process-shape-design .node:nth-child(5) {
+  width: 32px;
+  height: 32px;
+  opacity: 0.2;
+  animation-delay: 0.8s;
+}
+
+.process-shape-design .connector {
+  width: 24px;
+  height: 2px;
+  background: var(--color-accent);
+  opacity: 0.15;
+  animation: designConnectorPulse 2.4s ease-in-out infinite;
+}
+
+.process-shape-design .connector:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.process-shape-design .connector:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+@keyframes designNodePulse {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  40% { opacity: 0.6; transform: scale(1.1); }
+  60% { opacity: 0.6; transform: scale(1.1); }
+}
+@keyframes designConnectorPulse {
+  0%, 100% { opacity: 0.1; transform: scaleX(1); }
+  40% { opacity: 0.4; transform: scaleX(1.3); }
+  60% { opacity: 0.4; transform: scaleX(1.3); }
+}
+
+/* Card 3 — layers that stack up one by one (iterative building) */
+.process-shape-build {
+  position: relative;
+  width: 100px;
+  height: 80px;
+}
+
+.process-shape-build span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  animation: buildStack 3s ease-in-out infinite;
+}
+
+.process-shape-build span:nth-child(1) {
+  bottom: 0;
+  opacity: 0.5;
+  animation-delay: 0s;
+}
+.process-shape-build span:nth-child(2) {
+  bottom: 20px;
+  width: 85%;
+  left: 7.5%;
+  opacity: 0.35;
+  animation-delay: 0.3s;
+}
+.process-shape-build span:nth-child(3) {
+  bottom: 40px;
+  width: 70%;
+  left: 15%;
+  opacity: 0.2;
+  animation-delay: 0.6s;
+}
+
+@keyframes buildStack {
+  0% { transform: translateY(30px); opacity: 0; }
+  20% { transform: translateY(0); opacity: 0.5; }
+  80% { transform: translateY(0); opacity: 0.5; }
+  100% { transform: translateY(30px); opacity: 0; }
+}
+
+/* Card 4 — circular arrows (feedback loops) */
+.process-shape-evolve {
+  width: 90px;
+  height: 90px;
+  border: 2px dashed var(--color-accent);
+  border-radius: var(--radius-circle);
+  opacity: 0.4;
+  position: relative;
+  animation: evolveRotate 12s linear infinite;
+}
+
+.process-shape-evolve::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: var(--color-accent);
+  border-radius: var(--radius-circle);
+  opacity: 0.8;
+}
+
+@keyframes evolveRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Text area — bottom half */
+.process-card-body {
+  padding: var(--space-6) var(--space-8) var(--space-8);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.process-card-num {
+  font-size: var(--fs-micro);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-label);
+  color: var(--color-text-quaternary);
+  margin-bottom: var(--space-4);
+  font-variant-numeric: tabular-nums;
+}
+
+.process-card-body h3 {
+  font-size: 1.5rem;
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.process-card-body p {
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+  flex: 1;
+}
+
+.process-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.process-tags span {
+  font-size: var(--fs-tag);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-tag);
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-tag);
+  color: var(--color-text-tag);
+}
+
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .process-scroll-area {
+    height: auto;
+  }
+
+  .process-sticky {
+    position: relative;
+    height: auto;
+    padding: var(--space-16) 5vw var(--space-16);
+  }
+
+  .process-track {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: var(--space-4);
+  }
+
+  .process-card {
+    scroll-snap-align: start;
+    width: min(320px, 85vw);
+    flex-direction: column;
+  }
+
+  .process-card-visual {
+    width: 100%;
+    height: 140px;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+}

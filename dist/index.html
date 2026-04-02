@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blaziken Technologies</title>
+
+  <!-- FOUC prevention -->
+  <script>
+    (function() {
+      const stored = localStorage.getItem('blaziken-theme');
+      if (stored) {
+        document.documentElement.setAttribute('data-theme', stored);
+      }
+      // else: defaults to dark via CSS :root:not([data-theme])
+    })();
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script type="module" crossorigin src="/assets/index-BKCKtJu4.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DWr2uFWj.css">
+</head>
+<body class="loading">
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-dot"></div>
+    <span class="preloader-text">Loading</span>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">
+      <img src="/logo-dark.svg" alt="Blaziken" class="navbar-logo">
+      Blaziken
+    </a>
+    <div class="navbar-center">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#work">Work</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="navbar-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode">
+        <svg class="theme-icon theme-icon--sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+        </svg>
+        <svg class="theme-icon theme-icon--moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+        </svg>
+      </button>
+      <a href="#contact" class="navbar-cta">Get in Touch</a>
+    </div>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#work">Work</a>
+    <a href="#team">Team</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        AI-native software engineering
+      </div>
+      <h1>We turn ideas into<br>intelligent software.</h1>
+      <p class="hero-subtitle">From hypothesis to production — a 15-member team of fullstack developers who architect AI-powered applications, data pipelines, and cloud systems. 10x faster, at a fraction of the cost.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">
+          Start Your Project
+          <svg class="btn-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+        </a>
+        <a href="#work" class="btn-secondary">
+          View Our Work
+          <svg class="btn-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Dashboard Mockup -->
+    <div class="hero-dashboard" aria-hidden="true">
+      <div class="dash">
+        <!-- Sidebar -->
+        <div class="dash-sidebar">
+          <div class="dash-sidebar-brand">
+            <div class="dash-logo"></div>
+            <span>Blaziken</span>
+          </div>
+          <div class="dash-sidebar-nav">
+            <div class="dash-nav-item active">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25a2.25 2.25 0 0 1-2.25-2.25v-2.25Z"/></svg>
+              <span>Projects</span>
+            </div>
+            <div class="dash-nav-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/></svg>
+              <span>AI Agents</span>
+            </div>
+            <div class="dash-nav-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></svg>
+              <span>Analytics</span>
+            </div>
+            <div class="dash-nav-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+              <span>Settings</span>
+            </div>
+          </div>
+          <div class="dash-sidebar-projects">
+            <span class="dash-sidebar-label">Active Projects</span>
+            <div class="dash-project-item">
+              <span class="dash-project-dot" style="background: #5e5ef0"></span>
+              Survey Insights Engine
+            </div>
+            <div class="dash-project-item">
+              <span class="dash-project-dot" style="background: #3b82f6"></span>
+              Sales Call Analyzer
+            </div>
+            <div class="dash-project-item">
+              <span class="dash-project-dot" style="background: #10b981"></span>
+              MCQ Platform
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="dash-main">
+          <!-- Top bar -->
+          <div class="dash-topbar">
+            <div class="dash-topbar-left">
+              <span class="dash-topbar-title">Survey Insights Engine</span>
+              <span class="dash-topbar-badge">In Progress</span>
+            </div>
+            <div class="dash-topbar-right">
+              <div class="dash-avatar-stack">
+                <div class="dash-avatar" style="background: #5e5ef0">A</div>
+                <div class="dash-avatar" style="background: #3b82f6">K</div>
+                <div class="dash-avatar" style="background: #10b981">R</div>
+              </div>
+              <div class="dash-search-box">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
+                <span class="dash-search-text">Search tasks...</span>
+                <span class="dash-search-cursor"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats row -->
+          <div class="dash-stats">
+            <div class="dash-stat">
+              <span class="dash-stat-value" data-stat="tasks" data-target="5">0</span>
+              <span class="dash-stat-label">Tasks</span>
+            </div>
+            <div class="dash-stat">
+              <span class="dash-stat-value" data-stat="accuracy" data-target="40%">0%</span>
+              <span class="dash-stat-label">Done</span>
+            </div>
+            <div class="dash-stat">
+              <span class="dash-stat-value" data-stat="processed" data-target="3.2k">0</span>
+              <span class="dash-stat-label">Processed</span>
+            </div>
+            <div class="dash-stat">
+              <span class="dash-stat-value" data-stat="latency" data-target="12ms">0ms</span>
+              <span class="dash-stat-label">Latency</span>
+            </div>
+          </div>
+
+          <!-- Task list -->
+          <div class="dash-tasks">
+            <div class="dash-task-header">
+              <span>Task</span>
+              <span>Status</span>
+              <span>Priority</span>
+              <span>Assignee</span>
+            </div>
+            <div class="dash-task-row">
+              <span class="dash-task-name">
+                <svg class="dash-task-check done" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" /><path d="M5 8l2 2 4-4" /></svg>
+                Implement RAG pipeline
+              </span>
+              <span class="dash-status done">Done</span>
+              <span class="dash-priority high">High</span>
+              <span class="dash-assignee"><span class="dash-avatar-sm" style="background:#5e5ef0">A</span></span>
+            </div>
+            <div class="dash-task-row">
+              <span class="dash-task-name">
+                <svg class="dash-task-check done" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" /><path d="M5 8l2 2 4-4" /></svg>
+                NLP theme extraction
+              </span>
+              <span class="dash-status done">Done</span>
+              <span class="dash-priority med">Med</span>
+              <span class="dash-assignee"><span class="dash-avatar-sm" style="background:#3b82f6">K</span></span>
+            </div>
+            <div class="dash-task-row active">
+              <span class="dash-task-name">
+                <svg class="dash-task-check progress" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" /><path d="M8 4v4l2.5 2.5" /></svg>
+                Dashboard visualizations
+              </span>
+              <span class="dash-status progress">In Progress</span>
+              <span class="dash-priority high">High</span>
+              <span class="dash-assignee"><span class="dash-avatar-sm" style="background:#10b981">R</span></span>
+            </div>
+            <div class="dash-task-row">
+              <span class="dash-task-name">
+                <svg class="dash-task-check todo" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" /></svg>
+                Export PDF reports
+              </span>
+              <span class="dash-status todo">Todo</span>
+              <span class="dash-priority low">Low</span>
+              <span class="dash-assignee"><span class="dash-avatar-sm" style="background:#5e5ef0">A</span></span>
+            </div>
+            <div class="dash-task-row">
+              <span class="dash-task-name">
+                <svg class="dash-task-check todo" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" /></svg>
+                Performance optimization
+              </span>
+              <span class="dash-status todo">Todo</span>
+              <span class="dash-priority med">Med</span>
+              <span class="dash-assignee"><span class="dash-avatar-sm" style="background:#3b82f6">K</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Fade overlay at bottom -->
+      <div class="hero-dashboard-fade"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SERVICES ═══════════════ -->
+  <section class="section-services" id="services">
+    <div class="services-header reveal">
+      <span class="section-label">What we build</span>
+      <h2 class="section-heading">End-to-end engineering for AI-native products.</h2>
+    </div>
+
+    <div class="services-stacker">
+      <!-- Row 1 — sticks in place -->
+      <div class="services-row services-row-1 reveal">
+        <div class="service-card">
+          <span class="service-card-number">(01)</span>
+          <h3>AI Systems &amp; Integrations</h3>
+          <p>LLM integrations, RAG pipelines, agentic workflows, and custom models tailored for your domain.</p>
+          <div class="service-tags"><span>LangChain</span><span>Claude</span><span>RAG</span><span>Agents</span></div>
+        </div>
+        <div class="service-card">
+          <span class="service-card-number">(02)</span>
+          <h3>Automation &amp; Pipelines</h3>
+          <p>Workflow orchestration, process automation, and intelligent pipelines that eliminate manual bottlenecks.</p>
+          <div class="service-tags"><span>Temporal</span><span>Airflow</span><span>Celery</span><span>ETL</span></div>
+        </div>
+        <div class="service-card">
+          <span class="service-card-number">(03)</span>
+          <h3>Web Platforms</h3>
+          <p>Full-stack applications with modern frameworks. From MVPs to enterprise-grade systems.</p>
+          <div class="service-tags"><span>Django</span><span>React</span><span>Next.js</span><span>PostgreSQL</span></div>
+        </div>
+      </div>
+
+      <!-- Row 2 — scrolls up and stacks on top of row 1 -->
+      <div class="services-row services-row-2 reveal reveal-delay-2">
+        <div class="service-card">
+          <span class="service-card-number">(04)</span>
+          <h3>Mobile Apps</h3>
+          <p>Cross-platform mobile experiences with native performance and intuitive interfaces.</p>
+          <div class="service-tags"><span>React Native</span><span>Flutter</span><span>iOS</span><span>Android</span></div>
+        </div>
+        <div class="service-card">
+          <span class="service-card-number">(05)</span>
+          <h3>Data Intelligence</h3>
+          <p>Real-time analytics, data warehousing, and ML-powered insights that drive decisions.</p>
+          <div class="service-tags"><span>Spark</span><span>Redis</span><span>BigQuery</span><span>dbt</span></div>
+        </div>
+        <div class="service-card">
+          <span class="service-card-number">(06)</span>
+          <h3>Cloud &amp; DevOps</h3>
+          <p>AWS infrastructure, CI/CD, containerization, and automated deployments for zero-downtime systems.</p>
+          <div class="service-tags"><span>AWS</span><span>Docker</span><span>K8s</span><span>Terraform</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PROCESS ═══════════════ -->
+  <section class="section-process" id="process">
+    <div class="process-scroll-area">
+      <div class="process-sticky">
+        <div class="process-header">
+          <div class="process-header-text">
+            <span class="section-label">How we think</span>
+            <h2 class="section-heading">From problem to intelligence. A deliberate approach.</h2>
+          </div>
+          <div class="process-arrows">
+            <button class="process-arrow process-arrow-prev disabled" id="processPrev" aria-label="Previous">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/></svg>
+            </button>
+            <button class="process-arrow process-arrow-next" id="processNext" aria-label="Next">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="process-track">
+          <!-- Card 1: Understand -->
+          <div class="process-card">
+            <div class="process-card-visual">
+              <div class="process-visual-inner">
+                <div class="process-shape process-shape-understand"></div>
+              </div>
+            </div>
+            <div class="process-card-body">
+              <span class="process-card-num">001</span>
+              <h3>Understand</h3>
+              <p>We dig into your domain, users, and constraints. No assumptions — just sharp, first-principles analysis.</p>
+              <div class="process-tags"><span>Discovery</span><span>User Research</span><span>Domain Mapping</span></div>
+            </div>
+          </div>
+
+          <!-- Card 2: Design -->
+          <div class="process-card">
+            <div class="process-card-visual">
+              <div class="process-visual-inner">
+                <div class="process-shape process-shape-design">
+                  <div class="node"></div>
+                  <div class="connector"></div>
+                  <div class="node"></div>
+                  <div class="connector"></div>
+                  <div class="node"></div>
+                </div>
+              </div>
+            </div>
+            <div class="process-card-body">
+              <span class="process-card-num">002</span>
+              <h3>Design</h3>
+              <p>Architectural decisions that matter — data models, AI integration points, and system boundaries defined upfront.</p>
+              <div class="process-tags"><span>System Design</span><span>AI Strategy</span><span>Prototyping</span></div>
+            </div>
+          </div>
+
+          <!-- Card 3: Build -->
+          <div class="process-card">
+            <div class="process-card-visual">
+              <div class="process-visual-inner">
+                <div class="process-shape process-shape-build">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+            <div class="process-card-body">
+              <span class="process-card-num">003</span>
+              <h3>Build</h3>
+              <p>Iterative sprints with continuous deployment. Production-grade code with automated testing across all layers.</p>
+              <div class="process-tags"><span>Sprints</span><span>CI/CD</span><span>Testing</span></div>
+            </div>
+          </div>
+
+          <!-- Card 4: Evolve -->
+          <div class="process-card">
+            <div class="process-card-visual">
+              <div class="process-visual-inner">
+                <div class="process-shape process-shape-evolve"></div>
+              </div>
+            </div>
+            <div class="process-card-body">
+              <span class="process-card-num">004</span>
+              <h3>Evolve</h3>
+              <p>Post-launch monitoring, A/B testing, and feedback loops that continuously improve performance over time.</p>
+              <div class="process-tags"><span>Monitoring</span><span>A/B Tests</span><span>Feedback Loops</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PORTFOLIO ═══════════════ -->
+  <section class="section-portfolio" id="work">
+    <div class="portfolio-header reveal">
+      <span class="section-label">Projects</span>
+      <h2 class="section-heading">Real results from real engagements.</h2>
+    </div>
+
+    <div class="portfolio-stack">
+
+      <!-- Project 1: Survey -->
+      <div class="pf-project">
+        <div class="pf-project-text">
+          <span class="pf-project-label">Survey Insights</span>
+          <span class="pf-project-category">AI Systems</span>
+          <h3>360° Survey Insights Engine</h3>
+          <p>An AI-powered survey analytics tool that transforms thousands of open-ended responses into actionable insights in hours, not weeks.</p>
+          <div class="pf-project-stats">
+            <div><span class="pf-project-stat-value" data-count="91" data-suffix="%">0</span><span class="pf-project-stat-label">Theme accuracy</span></div>
+            <div><span class="pf-project-stat-value" data-count="100" data-suffix="+">0</span><span class="pf-project-stat-label">Insights delivered</span></div>
+          </div>
+          <div class="pf-project-tags"><span>RAG</span><span>NLP</span><span>Dashboards</span><span>Prisma</span></div>
+        </div>
+        <div class="pf-project-visual">
+          <div class="pf-iso pf-iso--survey">
+            <div class="pf-panel"></div>
+            <div class="pf-panel"></div>
+            <div class="pf-panel"></div>
+            <div class="pf-accent"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: Sales Call -->
+      <div class="pf-project">
+        <div class="pf-project-text">
+          <span class="pf-project-label">Call Analytics</span>
+          <span class="pf-project-category">Automation</span>
+          <h3>AI-Powered Sales Call Analyzer</h3>
+          <p>End-to-end call analytics pipeline that reviews every sales call automatically with AI-powered scoring and coaching hints.</p>
+          <div class="pf-project-stats">
+            <div><span class="pf-project-stat-value" data-count="200" data-suffix="+">0</span><span class="pf-project-stat-label">Calls per week</span></div>
+            <div><span class="pf-project-stat-value" data-count="100" data-suffix="%">0</span><span class="pf-project-stat-label">Coverage</span></div>
+          </div>
+          <div class="pf-project-tags"><span>Whisper</span><span>NER</span><span>Scoring</span><span>Pipeline</span></div>
+        </div>
+        <div class="pf-project-visual">
+          <div class="pf-iso pf-iso--sales">
+            <div class="pf-panel"></div>
+            <div class="pf-panel"></div>
+            <div class="pf-panel"></div>
+            <div class="pf-panel"></div>
+            <div class="pf-accent"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: MCQ -->
+      <div class="pf-project">
+        <div class="pf-project-text">
+          <span class="pf-project-label">EdTech Platform</span>
+          <span class="pf-project-category">AI Systems</span>
+          <h3>Intelligent MCQ Generation Platform</h3>
+          <p>RAG-powered question generation platform that produces calibrated assessments from any content source at scale.</p>
+          <div class="pf-project-stats">
+            <div><span class="pf-project-stat-value" data-count="1000" data-suffix="+">0</span><span class="pf-project-stat-label">Questions / month</span></div>
+            <div><span class="pf-project-stat-value" data-count="77" data-suffix="%">0</span><span class="pf-project-stat-label">First-pass acceptance</span></div>
+          </div>
+          <div class="pf-project-tags"><span>RAG</span><span>Generation</span><span>EdTech</span><span>QA Pipeline</span></div>
+        </div>
+        <div class="pf-project-visual">
+          <div class="pf-iso pf-iso--mcq">
+            <div class="pf-panel"></div>
+            <div class="pf-panel"></div>
+            <div class="pf-circle"></div>
+            <div class="pf-circle"></div>
+            <div class="pf-circle"></div>
+            <div class="pf-circle"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: Brand -->
+      <div class="pf-project">
+        <div class="pf-project-text">
+          <span class="pf-project-label">Brand Intelligence</span>
+          <span class="pf-project-category">Multi-Model AI</span>
+          <h3>Multi-Model Brand Asset Generator</h3>
+          <p>Multi-model AI orchestration platform that generates on-brand marketing assets at 10x previous speed.</p>
+          <div class="pf-project-stats">
+            <div><span class="pf-project-stat-value" data-count="3000" data-suffix="+">0</span><span class="pf-project-stat-label">Assets produced</span></div>
+            <div><span class="pf-project-stat-value" data-count="10" data-suffix="x">0</span><span class="pf-project-stat-label">Speed increase</span></div>
+          </div>
+          <div class="pf-project-tags"><span>GPT-4</span><span>SDXL</span><span>Orchestration</span><span>Branding</span></div>
+        </div>
+        <div class="pf-project-visual">
+          <div class="pf-iso pf-iso--brand">
+            <div class="pf-panel"></div>
+            <div class="pf-panel"></div>
+            <div class="pf-panel"></div>
+            <div class="pf-panel"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ TEAM ═══════════════ -->
+  <section class="section-team" id="team">
+    <!-- Floating avatars -->
+    <div class="team-avatars">
+      <div class="team-avatar team-avatar--lg team-avatar--c1">SK</div>
+      <div class="team-avatar team-avatar--md team-avatar--c2">V</div>
+      <div class="team-avatar team-avatar--lg team-avatar--c3">KS</div>
+      <div class="team-avatar team-avatar--sm team-avatar--c4">PT</div>
+      <div class="team-avatar team-avatar--md team-avatar--c5">RK</div>
+      <div class="team-avatar team-avatar--lg team-avatar--c6">RG</div>
+      <div class="team-avatar team-avatar--sm team-avatar--c2">SK</div>
+      <div class="team-avatar team-avatar--md team-avatar--c1">YJ</div>
+      <div class="team-avatar team-avatar--sm team-avatar--c3">J</div>
+      <div class="team-avatar team-avatar--md team-avatar--c4">SA</div>
+      <div class="team-avatar team-avatar--sm team-avatar--c5">TS</div>
+      <div class="team-avatar team-avatar--lg team-avatar--c6">S</div>
+      <div class="team-avatar team-avatar--md team-avatar--c1">SS</div>
+      <div class="team-avatar team-avatar--sm team-avatar--c3">EB</div>
+    </div>
+
+    <div class="team-content reveal">
+      <div class="team-badge">
+        <span class="team-badge-dot"></span>
+        15 members · 100% AI-augmented
+      </div>
+      <h2>Everyone codes.<br>Everyone ships.</h2>
+      <p class="team-subtitle">A 15-member team of fullstack developers shipping 3x faster through agentic coding workflows. No handoffs, no bottlenecks.</p>
+      <div class="team-roles">
+        <div class="team-role">
+          <span class="team-role-count">11</span>
+          <span class="team-role-label">Engineers</span>
+        </div>
+        <div class="team-role">
+          <span class="team-role-count">2</span>
+          <span class="team-role-label">Designers</span>
+        </div>
+        <div class="team-role">
+          <span class="team-role-count">2</span>
+          <span class="team-role-label">Product</span>
+        </div>
+      </div>
+      <span class="team-tagline">Mumbai, India · US timezone overlap</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PRACTICES ═══════════════ -->
+  <section class="section-practices" id="practices">
+    <div class="practices-header reveal">
+      <span class="section-label">How we work</span>
+      <h2 class="section-heading">World-class engineering practices.</h2>
+    </div>
+
+    <div class="practices-grid">
+
+      <!-- Featured: Agentic Coding — terminal mock -->
+      <div class="pr-featured reveal">
+        <div class="pr-featured-text">
+          <span class="pr-num">01</span>
+          <h3 class="pr-title">Agentic Coding</h3>
+          <p class="pr-desc">AI agents handle boilerplate, testing, and documentation — engineers focus on architecture and complex problem-solving. Every team member ships with AI pair programming.</p>
+          <div class="pr-status"><span class="pr-status-dot"></span> Active in all projects</div>
+        </div>
+        <div class="pr-featured-visual">
+          <div class="mock-terminal">
+            <div class="mock-terminal-bar"><span></span><span></span><span></span></div>
+            <div class="mock-terminal-body">
+              <div><span class="t-prompt">$</span> <span class="t-cmd">claude</span> <span class="t-comment"># starting agent</span></div>
+              <div><span class="t-success">✓</span> <span class="t-file">Analyzing codebase...</span></div>
+              <div><span class="t-success">✓</span> <span class="t-file">Generated 12 test cases</span></div>
+              <div><span class="t-success">✓</span> <span class="t-file">Refactored auth module</span></div>
+              <div><span class="t-success">✓</span> <span class="t-file">Updated API docs</span></div>
+              <div><span class="t-success">✓</span> All checks passed</div>
+              <div><span class="t-prompt">$</span> <span class="t-cmd">git push origin main</span><span class="t-cursor"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 1: TDD + Code Review + Modular -->
+      <div class="pr-row">
+        <div class="pr-card reveal">
+          <div class="pr-card-visual">
+            <div class="mock-tests">
+              <div class="mock-test-row"><span class="mock-test-icon pass">✓</span><span class="mock-test-name">auth.login</span><span class="mock-test-time">12ms</span></div>
+              <div class="mock-test-row"><span class="mock-test-icon pass">✓</span><span class="mock-test-name">auth.signup</span><span class="mock-test-time">8ms</span></div>
+              <div class="mock-test-row"><span class="mock-test-icon pass">✓</span><span class="mock-test-name">api.users</span><span class="mock-test-time">23ms</span></div>
+              <div class="mock-test-row"><span class="mock-test-icon pass">✓</span><span class="mock-test-name">api.projects</span><span class="mock-test-time">18ms</span></div>
+              <div class="mock-test-row"><span class="mock-test-icon pass">✓</span><span class="mock-test-name">db.migrations</span><span class="mock-test-time">45ms</span></div>
+            </div>
+          </div>
+          <div class="pr-card-text">
+            <span class="pr-num">02</span>
+            <h3 class="pr-title">Test-Driven</h3>
+            <p class="pr-desc">Every feature ships with unit, integration, and E2E tests — automated via CI/CD.</p>
+          </div>
+        </div>
+
+        <div class="pr-card reveal reveal-delay-2">
+          <div class="pr-card-visual">
+            <div class="mock-diff">
+              <div class="mock-diff-header">src/auth/middleware.ts</div>
+              <div class="mock-diff-body">
+                <div class="diff-line neutral"><span class="diff-num">14</span>  const token = req.headers</div>
+                <div class="diff-line remove"><span class="diff-num">15</span>- const user = decode(token)</div>
+                <div class="diff-line add"><span class="diff-num">15</span>+ const user = await verify(token)</div>
+                <div class="diff-line add"><span class="diff-num">16</span>+ if (!user) throw new AuthError()</div>
+                <div class="diff-line neutral"><span class="diff-num">17</span>  req.user = user</div>
+                <div class="diff-line neutral"><span class="diff-num">18</span>  next()</div>
+              </div>
+            </div>
+          </div>
+          <div class="pr-card-text">
+            <span class="pr-num">03</span>
+            <h3 class="pr-title">Code Review</h3>
+            <p class="pr-desc">Every PR reviewed by senior engineers + AI-powered static analysis tools.</p>
+          </div>
+        </div>
+
+        <div class="pr-card reveal reveal-delay-4">
+          <div class="pr-card-visual">
+            <div class="mock-modules">
+              <div class="mock-module active">Auth</div>
+              <div class="mock-module">API</div>
+              <div class="mock-module">DB</div>
+              <div class="mock-module">AI</div>
+              <div class="mock-module active">Queue</div>
+              <div class="mock-module">Cache</div>
+              <div class="mock-module">Log</div>
+              <div class="mock-module">Store</div>
+              <div class="mock-module active">CDN</div>
+            </div>
+          </div>
+          <div class="pr-card-text">
+            <span class="pr-num">04</span>
+            <h3 class="pr-title">Modular Architecture</h3>
+            <p class="pr-desc">Clean separation of concerns, dependency injection, and SOLID principles.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: CI/CD + Observability — 2 cards spanning full width -->
+      <div class="pr-row pr-row--half">
+        <div class="pr-card reveal">
+          <div class="pr-card-visual">
+            <div class="mock-pipeline">
+              <div class="mock-stage done"><div class="mock-stage-dot">✓</div><span class="mock-stage-label">Build</span></div>
+              <div class="mock-stage-line done"></div>
+              <div class="mock-stage done"><div class="mock-stage-dot">✓</div><span class="mock-stage-label">Test</span></div>
+              <div class="mock-stage-line done"></div>
+              <div class="mock-stage running"><div class="mock-stage-dot">⟳</div><span class="mock-stage-label">Stage</span></div>
+              <div class="mock-stage-line"></div>
+              <div class="mock-stage"><div class="mock-stage-dot">4</div><span class="mock-stage-label">Deploy</span></div>
+            </div>
+          </div>
+          <div class="pr-card-text">
+            <span class="pr-num">05</span>
+            <h3 class="pr-title">Continuous Deployment</h3>
+            <p class="pr-desc">Automated pipelines from commit to production with zero-downtime deploys.</p>
+          </div>
+        </div>
+
+        <div class="pr-card reveal reveal-delay-2">
+          <div class="pr-card-visual">
+            <div class="mock-metrics">
+              <div class="mock-metric"><span class="mock-metric-label">CPU</span><div class="mock-metric-track"><div class="mock-metric-fill green"></div></div><span class="mock-metric-val">82%</span></div>
+              <div class="mock-metric"><span class="mock-metric-label">Memory</span><div class="mock-metric-track"><div class="mock-metric-fill blue"></div></div><span class="mock-metric-val">65%</span></div>
+              <div class="mock-metric"><span class="mock-metric-label">Uptime</span><div class="mock-metric-track"><div class="mock-metric-fill purple"></div></div><span class="mock-metric-val">99.9%</span></div>
+              <div class="mock-metric"><span class="mock-metric-label">Latency</span><div class="mock-metric-track"><div class="mock-metric-fill amber"></div></div><span class="mock-metric-val">12ms</span></div>
+            </div>
+          </div>
+          <div class="pr-card-text">
+            <span class="pr-num">06</span>
+            <h3 class="pr-title">Observability</h3>
+            <p class="pr-desc">Real-time monitoring, alerting, and distributed tracing across all services.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <section class="section-cta reveal">
+    <div class="cta-content">
+      <h2>Let's build something intelligent.</h2>
+      <p>Have a project in mind? We'll take it from hypothesis to production — 10x faster, at a fraction of the cost.</p>
+      <div class="cta-buttons">
+        <a href="#contact" class="btn-primary">
+          Start a Project
+          <svg class="btn-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+        </a>
+        <a href="mailto:dev@blaziken.in" class="btn-secondary">
+          dev@blaziken.in
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT ═══════════════ -->
+  <section class="section-contact" id="contact">
+    <div class="contact-wrapper">
+
+      <!-- Info boxes -->
+      <div class="contact-boxes reveal">
+        <div class="contact-box">
+          <div class="contact-box-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+          </div>
+          <h3>Email</h3>
+          <a href="mailto:dev@blaziken.in">dev@blaziken.in</a>
+          <span class="contact-box-note">Typically respond within 24 hours</span>
+        </div>
+
+        <div class="contact-box">
+          <div class="contact-box-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+          </div>
+          <h3>Phone</h3>
+          <a href="tel:+917000065346">+91 70000 65346</a>
+          <span class="contact-box-note">Mon–Fri, 10 AM – 7 PM IST</span>
+        </div>
+
+        <div class="contact-box">
+          <div class="contact-box-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+          </div>
+          <h3>Location</h3>
+          <span>Mumbai, India</span>
+          <span class="contact-box-note">US timezone overlap available</span>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="contact-form-wrapper reveal">
+        <span class="contact-form-label">Send us a message</span>
+        <form class="contact-form" onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="you@company.com">
+          </div>
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" placeholder="Company name">
+          </div>
+          <div class="form-group">
+            <label for="service">Service</label>
+            <select id="service">
+              <option value="" disabled selected>Select a service</option>
+              <option>AI Systems & Integrations</option>
+              <option>Automation & Pipelines</option>
+              <option>Web Platforms</option>
+              <option>Mobile Apps</option>
+              <option>Data Intelligence</option>
+              <option>Cloud & DevOps</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell us about your project..."></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn-primary">
+              Send Message
+              <svg class="btn-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Social links -->
+      <div class="contact-social reveal">
+        <a href="#" class="contact-social-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          LinkedIn
+        </a>
+        <a href="#" class="contact-social-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="#" class="contact-social-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          X / Twitter
+        </a>
+        <a href="#" class="contact-social-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-name">
+          <img src="/logo-dark.svg" alt="Blaziken" class="footer-logo-icon">
+          Blaziken
+        </div>
+        <p class="footer-brand-desc">AI-native software engineering. From hypothesis to production — 10x faster.</p>
+      </div>
+      <div class="footer-nav">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">AI Systems</a></li>
+          <li><a href="#services">Automation</a></li>
+          <li><a href="#services">Web Platforms</a></li>
+          <li><a href="#services">Mobile Apps</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">X / Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-stroke-logo">
+      <img src="/stroke-logo.png" alt="Blaziken Technologies" class="footer-stroke-img">
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copyright">&copy; 2026 Blaziken Technologies. All rights reserved.</span>
+      <a href="#" class="footer-back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+        Back to top
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"/></svg>
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>
